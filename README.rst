@@ -14,7 +14,7 @@ Features
 - `drone <https://drone.io/>`_ for continuous integration
 - `gogs <https://gogs.io/>`_ self-hosted Git service
 - `docker <https://www.docker.com/>`_ containerization platform
-
+- various documentation testing, viewing and building  tools
 
 Documentation
 =============

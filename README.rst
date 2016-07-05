@@ -2,6 +2,9 @@
 mr.otlet
 ========
 
+.. image:: https://circleci.com/gh/svx/mr.otlet.svg?style=svg
+    :target: https://circleci.com/gh/svx/mr.otlet
+
 mr.otlet [#f1]_ is a vm [virtual machine] setup for documentation training.
 
 Features

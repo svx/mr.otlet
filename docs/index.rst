@@ -2,10 +2,9 @@
 Documentation
 =============
 
-.. toctres::
+.. toctree::
    :maxdepth: 2
 
-   vm_setup/desktop_environment
-   
+   desktop_environment
 
 

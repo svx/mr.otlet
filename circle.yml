@@ -1,0 +1,13 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker pull quay.io/tiramisu/mr.docs
+
+test:
+  override:
+    - bash ./tests/linkcheck.sh
+    - bash ./tests/spellcheck.sh

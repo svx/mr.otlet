@@ -7,7 +7,7 @@
 
 - linux based
 - beautiful desktop
-- for documentation needs pre-configured editors [[Vim](http://www.vim.org), [Sublime Text 3](https://www.sublimetext.com/3)
+- for documentation needs pre-configured editors [[Vim](http://www.vim.org), [Sublime Text 3](https://www.sublimetext.com/3)]
 - for documentation need pre-configured terminal
 - [drone](https://drone.io) for continuous integration
 - [gogs](https://gogs.io/) self-hosted Git service

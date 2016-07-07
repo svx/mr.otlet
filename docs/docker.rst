@@ -11,5 +11,5 @@ Container
 - mr.alex
 - mr.pandoc
 
-.. note:: needs re-work/re-write
+.. note:: needs re-work/re-write, maybe as table?
 

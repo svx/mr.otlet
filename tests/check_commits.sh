@@ -21,7 +21,7 @@ else
 fi
 
 # Check if last commit includes rst
-changed_files="$(git diff HEAD~1 --name-only docs | grep ".*\.rst$")"
+changed_files="$(git diff HEAD~1 --name-only -- docs | grep ".*\.rst$")"
 
 #echo "$changed_files" | grep --quiet "$1" && eval "$2"
 echo "$changed_files"

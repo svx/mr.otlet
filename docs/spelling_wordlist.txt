@@ -15,3 +15,5 @@ bulleted
 interoperability
 de
 GitKraken
+alex
+pandoc

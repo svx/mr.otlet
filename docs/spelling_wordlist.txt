@@ -17,3 +17,10 @@ de
 GitKraken
 alex
 pandoc
+vim
+gnome3
+htop
+text3
+sublime-text3
+aspell
+myspell

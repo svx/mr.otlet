@@ -4,9 +4,10 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Update the box
 apt-get -qqy update
-apt-get -qqy install linux-headers-$(uname -r) build-essential
+#apt-get -qqy install linux-headers-$(uname -r) build-essential
 
-# Install development tools
+
+# Install base tools
 apt-get -qqy install curl wget vim unzip htop
 
 # Remove unneeded items

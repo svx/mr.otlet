@@ -52,7 +52,8 @@
     {
       "type": "vagrant",
 	  "compression_level": "9",
-      "output": "{{user `vm_name`}}.box"
+	  "keep_input_artifact": true,
+	  "output": "{{user `vm_name`}}.box"
     }
   ],
   "provisioners": [

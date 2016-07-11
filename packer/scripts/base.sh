@@ -8,7 +8,11 @@ apt-get -qqy update
 
 
 # Install base tools
-apt-get -qqy install curl wget vim unzip htop retext
+apt-get -qqy install curl wget vim unzip htop retext git python-pip pandoc
+
+
+# Install packages we need for the theme [https://github.com/lassekongo83/zuki-themes]
+apt-get -qqy install gtk2-engines-murrine gtk2-engines-pixbuf fonts-roboto
 
 # Remove unneeded items
 apt-get -qy purge exim4 exim4-base

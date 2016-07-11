@@ -1,2 +1,12 @@
 docs/_build/*
 docs/.DS_Store
+packer/build.hwm
+packer/build.pwd
+packer/build.pwi
+packer/debian85.box
+packer/packer_cache/
+version.hwm
+version.pwd
+version.pwi
+
+

@@ -5,7 +5,7 @@ Documentation
 .. toctree::
    :maxdepth: 2
 
-   applications
+   applications/index
    docker
    vm_setup
    desktop_environment

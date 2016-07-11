@@ -8,7 +8,7 @@ apt-get -qqy update
 
 
 # Install base tools
-apt-get -qqy install curl wget vim unzip htop
+apt-get -qqy install curl wget vim unzip htop retext
 
 # Remove unneeded items
 apt-get -qy purge exim4 exim4-base

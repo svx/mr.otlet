@@ -24,3 +24,4 @@ text3
 sublime-text3
 aspell
 myspell
+ReText

@@ -19,4 +19,8 @@ A open Firefox
    :alt: Picture of a open Firefox tab showing https://plone.org
 
 
+A open ReText
+=============
 
+.. image:: _static/mr.otlet_retext.png
+   :alt: Picture of a open ReText editor

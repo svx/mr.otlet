@@ -18,4 +18,5 @@ other install stuff
 - bashrc
 - vimrc
 - alexrc
+- sublime config
 

@@ -63,3 +63,10 @@ gsettings set org.gnome.desktop.background picture-options "none"
 
 Make sure we run above settings as a script as user vagrant, something like:
 sudo -u wayne '/home/wayne/script2.sh' 
+
+See example below:
+
+# Prevent the screen from locking
+sudo -u vagrant dbus-launch gsettings set org.gnome.desktop.session idle-delay 0
+sudo -u vagrant dbus-launch gsettings set org.gnome.desktop.screensaver idle-activation-enabled false
+sudo -u vagrant dbus-launch gsettings set org.gnome.desktop.lockdown disable-lock-screen true

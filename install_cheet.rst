@@ -60,3 +60,6 @@ gsettings set org.gnome.desktop.background primary-color "#425265"
 gsettings set org.gnome.desktop.background secondary-color "#425265"
 gsettings set org.gnome.desktop.background color-shading-type "solid"
 gsettings set org.gnome.desktop.background picture-options "none"
+
+Make sure we run above settings as a script as user vagrant, something like:
+sudo -u wayne '/home/wayne/script2.sh' 

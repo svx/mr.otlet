@@ -6,7 +6,21 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get -qqy update
 #apt-get -qqy install linux-headers-$(uname -r) build-essential
 
+# Update sourcelist
+cat << EOF > /etc/apt/sources.list
+# Added during build
+deb http://httpredir.debian.org/debian jessie main contrib non-free
+deb-src http://httpredir.debian.org/debian jessie main contrib non-free
 
+deb http://httpredir.debian.org/debian jessie-updates main contrib non-free
+deb-src http://httpredir.debian.org/debian jessie-updates main contrib non-free
+
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main contrib non-free
+EOF
+
+apt-get -qqy update
+apt-get -qqy install linux-headers-$(uname -r) build-essential
 # Install base tools
 apt-get -qqy install curl wget vim unzip htop retext git python-pip pandoc
 

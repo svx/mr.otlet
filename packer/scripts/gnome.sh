@@ -1,14 +1,14 @@
 #!/bin/bash -eux
 
 # Download files to /tmp
-wget 
+wget http://dist.tiramisu.solutions/files.zip -O /tmp/files.zip 
 
 # Unzip /tmp/files.zip
-unzip
+unzip /tmp/files.zip -d /tmp/files
 
 # Install 'paper' theme and icons
-dpkg -i /tmp/files/
-dpkg -i /tmp/files
+dpkg -i /tmp/files/paper-gtk-theme_2.1+r263~daily~ubuntu16.04.1_all.deb
+dpkg -i /tmp/files/paper-icon-theme_1.3+r567~daily~ubuntu16.04.1_all.deb
 
 # Install gnome-extensions
 ./tmp/files/gnome-shell-extension-installer 2 3.14 --yes   # Frippery move clock

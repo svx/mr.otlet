@@ -1,3 +1,4 @@
+#!/bin/bash -eux
 # Set up Vagrant.
 
 date > /etc/vagrant_box_build_time
@@ -13,7 +14,7 @@ chmod 0600 /home/vagrant/.ssh/authorized_keys
 chown -R vagrant:vagrant /home/vagrant/.ssh
 
 # Customize the message of the day
-echo 'Welcome to your Vagrant-built virtual machine.' > /var/run/motd
+echo 'Welcome to mr.otlet.' > /var/run/motd
 
 # Install NFS client
 apt-get -y install nfs-common

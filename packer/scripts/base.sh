@@ -1,10 +1,11 @@
+#!/bin/bash -eux
+
 # Adjust root filesystem
 
 export DEBIAN_FRONTEND=noninteractive
 
 # Update the box
 apt-get -qqy update
-#apt-get -qqy install linux-headers-$(uname -r) build-essential
 
 # Update sourcelist
 cat << EOF > /etc/apt/sources.list

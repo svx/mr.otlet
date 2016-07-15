@@ -8,5 +8,6 @@ packer/packer_cache/
 version.hwm
 version.pwd
 version.pwi
+packer/files.zip
 
 

@@ -7,6 +7,6 @@ Virtual Machine Setup
 +-------------------+-------------------+
 |Memory             |2048               |
 +-------------------+-------------------+
-|Operating System   |Debian "Jessie"    |
+|Operating System   |Ubuntu 16.06       |
 +-------------------+-------------------+
 

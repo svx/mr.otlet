@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [[ ! "$DESKTOP" =~ ^(true|yes|on|1|TRUE|YES|ON])$ ]]; then
+  exit
+fi
+
+
+# Download files to /tmp
+apt-get install -y wget curl htop unzip
+wget http://dist.tiramisu.solutions/files.zip -O /tmp/files.zip
+
+# Unzip /tmp/files.zip
+unzip /tmp/files.zip -d /tmp/
+
+# INstall theme and icons
+add-apt-repository ppa:snwh/pulp -y
+apt-get update -y
+apt-get install -y paper-icon-theme
+apt-get install -y paper-gtk-theme
+apt-get install -y paper-cursor-theme
+
+# Install gnome extensions
+#sudo -u vagrant /tmp/files/gnome-shell-extension-installer 2 3.14 --yes   # Frippery move clock
+#sudo -u vagrant /tmp/files/gnome-shell-extension-installer 941 3.14 --yes # Show IP extension
+
+sudo -u vagrant /tmp/files/gnome-shell-extension-installer 2 3.14
+
+# Remove old dconf setting
+rm -rf /home/vagrant/.config/dconf
+
+# Move new dconf into place
+mkdir -p /home/vagrant/.config
+mv /tmp/files/dconf /home/vagrant/.config/dconf
+
+# Set permissions right
+chown -R vagrant:vagrant /home/vagrant/.config/
+

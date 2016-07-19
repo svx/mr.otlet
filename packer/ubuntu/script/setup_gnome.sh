@@ -28,3 +28,7 @@ sudo -u vagrant dbus-launch gsettings set org.gnome.desktop.background secondary
 sudo -u vagrant dbus-launch gsettings set org.gnome.desktop.background color-shading-type "solid"
 sudo -u vagrant dbus-launch gsettings set org.gnome.desktop.background picture-options "none"
 
+# Install sublime-text-3 via PPA
+add-apt-repository ppa:webupd8team/sublime-text-3 -y
+apt-get update -y
+apt-get install -y sublime-text-installer

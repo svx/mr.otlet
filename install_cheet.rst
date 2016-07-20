@@ -75,3 +75,9 @@ done: sudo -u vagrant dbus-launch gsettings set org.gnome.desktop.lockdown disab
 - sublime settings
 - bashrc
 
+For vim:
+
+https://github.com/tpoisot/dotfiles/blob/master/.vimrc
+http://timotheepoisot.fr/2014/01/01/vim-writing-environment/
+http://naperwrimo.org/wiki/index.php?title=Vim_for_Writers
+https://afterdraft.co/~aardvark/writing-with-vim

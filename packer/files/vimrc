@@ -11,15 +11,13 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Rykka/InstantRst' "https://github.com/Rykka/InstantRst
 Plugin 'rest.vim' "straight from vim.org/scripts
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'altercation/vim-colors-solarized'
-
 Plugin 'JamshedVesuna/vim-markdown-preview'
 
 "new plugins
@@ -63,7 +61,6 @@ syntax enable
 "stuff for airline
 set laststatus=2
 
-nerdtree
 "NERDTree with Ctrl+n (you can set whatever key you want)
 map <C-n> :NERDTreeToggle<CR>
 "close vim if the only window left open is a NERDTree

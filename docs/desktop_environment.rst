@@ -34,7 +34,16 @@ Vim editing python:
 .. image:: _static/vim _python.png
    :alt: Picture of vim editing python
 
-Vim editing reStructuredText [rst]
+
+
+Vim with open tree:
+
+.. image:: _static/vim _python.png
+   :alt: Picture of vim with open nerdtree
+
+
+
+Vim editing reStructuredText [rst]:
 
 .. image:: _static/vim _rst.png
    :alt: Picture of vim editing reStructuredText

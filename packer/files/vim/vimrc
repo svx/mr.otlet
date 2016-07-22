@@ -1,5 +1,10 @@
-set spelllang=en
+set spelllang=en_us
+" spell check options
 set spell
+nmap <silent> <leader>s :set spell!<CR>
+"autocmd BufRead COMMIT_EDITMSG setlocal spell spelllang=en_us
+"autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown,*,rst set spell spelllang=en_us
+
 syntax enable
 set number
 set nocompatible              " be iMproved, required
@@ -31,6 +36,11 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'ajh17/Spacegray.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
+Plugin 'vim-scripts/indentpython.vim'
+Bundle 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,7 +81,8 @@ call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+"call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('py', 'Magenta', 'none', '#ff00ff', '#151515')
 " pretty arrows
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -81,10 +92,25 @@ map <F5> :NERDTreeFocus<CR>
 "Disable folding for markdown
 let g:vim_markdown_folding_disabled = 1
 
+"Make python look nice
+let python_highlight_all=1
+
+"Use system clipboard
+set clipboard=unnamed
+
 "theme
 colorscheme spacegray
 "set linespace=5
 "set background=dark
+
+"white-spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 
 "stuff for airline
 set laststatus=2
@@ -108,5 +134,43 @@ function! DistractionFreeWriting()
         "set fullscreen                     " go to fullscreen editing mode
         set nonumber
 		set linebreak                      " break the lines on words
+		Goyo 70
 endfunction
+
+" c/o https://github.com/junegunn/goyo.vim/wiki/Customization
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd User GoyoEnter call <SID>goyo_enter()
+autocmd User GoyoLeave call <SID>goyo_leave()
+
+au BufNewFile,BufRead *.py, *.python, *.pysetf
+    set tabstop=4
+    set softtabstop=4
+    set shiftwidth=4
+    set textwidth=79
+    set expandtab
+    set autoindent
+    set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2
+
 

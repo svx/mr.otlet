@@ -24,3 +24,17 @@ A open ReText
 
 .. image:: _static/mr.otlet_retext.png
    :alt: Picture of a open ReText editor
+
+
+Vim
+===
+
+Vim editing python:
+
+.. image:: _static/vim _python.png
+   :alt: Picture of vim editing python
+
+Vim editing reStructuredText [rst]
+
+.. image:: _static/vim _rst.png
+   :alt: Picture of vim editing reStructuredText

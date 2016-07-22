@@ -25,3 +25,5 @@ sublime-text3
 aspell
 myspell
 ReText
+rst
+reStructuredText

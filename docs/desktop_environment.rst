@@ -44,3 +44,11 @@ Vim editing shell script and nerdtree:
 
 .. image:: _static/mrotlet_nerdtree.png
      :alt: Picture of vim editing shell scipt with a open nerdtree
+
+Sublime
+=======
+
+A open Sublime
+
+.. image:: _static/mr.otlet_sublime.rst.png
+   :alt: Picture of a open sublime-text-3 session

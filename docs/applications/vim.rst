@@ -27,7 +27,7 @@ Python
 
 - `syntastic <https://github.com/scrooloose/syntastic>`_ Syntax checking hacks for Vim
 
-- `indent/python.vim <http://www.vim.org/scripts/script.php?script_id=974>`_  An alternative indentation script for python
+- `indent/python.vim <https://github.com/vim-scripts/python.vim>`_  An alternative indentation script for python
 
 - `Valloric/YouCompleteMe <https://github.com/Valloric/YouCompleteMe>`_ A code-completion engine for Vim
 

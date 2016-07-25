@@ -37,10 +37,11 @@ Plugin 'ajh17/Spacegray.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'vim-scripts/indentpython.vim'
-Bundle 'Valloric/YouCompleteMe'
-"Plugin 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,6 +57,11 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" Ctrl-p is shortcut for mardown preview
+let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_browser='Google Chrome'
 
 "nerdtree
 "NERDTree with Ctrl+n (you can set whatever key you want)
@@ -115,7 +121,7 @@ autocmd BufWinLeave * call clearmatches()
 
 "stuff for airline
 set laststatus=2
-""white-spaces and taps
+"white-spaces and taps
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -128,7 +134,7 @@ function! DistractionFreeWriting()
         set background=light
         set guifont=Ubuntu\ Mono\ 11                " font to use
         set lines=40 columns=100           " size of the editable area
-		"set fuoptions=background:#00f5f6f6 " macvim specific setting for editor's background color 
+		"set fuoptions=background:#00f5f6f6 " macvim specific setting for editor's background color
         set guioptions-=r                  " remove right scrollbar
         set laststatus=0                   " don't show status line
         set noruler                        " don't show ruler

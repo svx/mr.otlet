@@ -39,3 +39,8 @@ Vim editing reStructuredText [rst]:
 
 .. image:: _static/vim _rst.png
    :alt: Picture of vim editing reStructuredText
+
+Vim editing shell scipt and nerdtree:
+
+.. image:: _static/mrotlet_nerdtree.png
+     :alt: Picture of vim editing shell scipt with a open nerdtree

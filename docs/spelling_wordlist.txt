@@ -27,3 +27,6 @@ myspell
 ReText
 rst
 reStructuredText
+Flake8
+rest
+nerdtree

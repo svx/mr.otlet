@@ -2,7 +2,7 @@
 Vim
 ===
 
-`Vim <http://www.vim.org/>`_ is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
+Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
 
 The Vim configuration of mr.otlet is already includes a example configuration for working with documentation and `Python <https://www.python.org/>`_.
 

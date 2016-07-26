@@ -58,6 +58,11 @@
   ],
   "provisioners": [
     {
+     "type": "file",
+     "source": "files",
+     "destination": "/tmp/files"
+    },
+    {
       "type": "shell",
       "pause_before": "5s",
       "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",

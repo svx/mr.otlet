@@ -12,3 +12,8 @@
   "preseed": "preseed.cfg",
   "vagrantfile_template": "tpl/vagrantfile-ubuntu1604-desktop.tpl"
 }
+{
+  "type": "file",
+  "source": "../upload/files.zip",
+  "destination": "/root/files.zip"
+}

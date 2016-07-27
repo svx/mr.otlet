@@ -1,4 +1,5 @@
 # Adjust root filesystem
+set -x
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -22,10 +23,9 @@ EOF
 apt-get -qqy update
 apt-get -qqy install linux-headers-$(uname -r) build-essential
 # Install base tools
-apt-get -qqy install curl wget vim unzip htop retext git python-pip pandoc mc
+apt-get -qqy install curl wget
 
 # Test file upload
-mv /tmp/files/hello.txt /opt
 
 # Remove unneeded items
 apt-get -qy purge exim4 exim4-base

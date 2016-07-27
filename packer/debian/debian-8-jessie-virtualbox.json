@@ -58,11 +58,6 @@
   ],
   "provisioners": [
     {
-     "type": "file",
-     "source": "files",
-     "destination": "/tmp"
-    },
-    {
       "type": "shell",
       "pause_before": "5s",
       "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
@@ -71,8 +66,22 @@
           "scripts": [
             "scripts/base.sh",
             "scripts/vagrant.sh",
-			"scripts/test.sh",
-            "scripts/virtualbox.sh",
+            "scripts/virtualbox.sh"
+        ]
+       }}},
+
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | sudo -S -E bash '{{.Path}}'",
+      "script": "scripts/ansible.sh"
+	},
+    {
+      "type": "shell",
+      "pause_before": "5s",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "override": {
+        "virtualbox-iso": {
+          "scripts": [
             "scripts/cleanup.sh",
             "scripts/minimize.sh"
           ]

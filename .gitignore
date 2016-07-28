@@ -10,4 +10,8 @@ version.pwd
 version.pwi
 packer/files.zip
 packer/upload/*
-
+devbox/lib/*
+devbox/bin/*
+devbox/local/*
+devbox/share/*
+devbox/packer/output-virtualbox-iso/*

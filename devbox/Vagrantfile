@@ -1,11 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
-  config.vm.box = "devbox"
-  config.vm.define "devbox" do |node|
-    node.vm.hostname = "devbox"
+  config.vm.box = "debiandev"
+  config.vm.define "debiandev" do |node|
+    node.vm.hostname = "debiandev"
     node.vm.provider "virtualbox" do |vb|
-      vb.memory = "1024"
+      vb.memory = "2048"
 	  vb.gui = true
     end
     node.vm.network "private_network", ip: "10.10.20.10"

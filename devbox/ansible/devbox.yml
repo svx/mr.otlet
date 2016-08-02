@@ -6,3 +6,29 @@
   - name: Set shell to zsh
     become: yes
     user: name=vagrant shell=/bin/zsh
+
+  - name: Copy vimrc
+    copy: src=files/vimrc dest=/home/vagrant/.vimrc owner=vagrant group=vagrant
+
+  #- name: Create vim dir
+  #  file: path=/home/vagrant/.vim state=directory owner=vagrant group=vagrant
+
+  - name: Upload vim directory
+    copy: src=files/vim dest=/home/vagrant/ owner=vagrant group=vagrant
+
+  - name: stat foo
+    stat: path=/home/vagrant/vim
+    register: foo_stat
+
+  - name: Move vim to .vim
+    become_user: vagrant
+    command: mv /home/vagrant/vim /home/vagrant/.vim
+    when: foo_stat.stat.exists
+
+  - name: Cloning Vundle
+    become_user: vagrant
+    git: repo=https://github.com/gmarik/Vundle.vim.git dest=/home/vagrant/.vim/bundle/Vundle.vim
+
+  - name: Run vundle install
+    become_user: vagrant
+    command: vim +PluginInstall! +qall

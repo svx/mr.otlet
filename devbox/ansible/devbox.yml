@@ -1,7 +1,7 @@
 ---
-- hosts: all 
+- hosts: all
   tasks:
-  - name: Copy zshrc 
+  - name: Copy zshrc
     copy: src=files/zshrc dest=/home/vagrant/.zshrc
   - name: Set shell to zsh
     become: yes
@@ -32,3 +32,9 @@
   - name: Run vundle install
     become_user: vagrant
     command: vim +PluginInstall! +qall
+
+  - name: Download Sublime Installer
+    command: wget https://gist.githubusercontent.com/svx/ce9874b86ed3fe9c14a19500545cd4bb/raw/099af474bd3be05d06b49f9aceb760dc27f1f159/install_sublime_text.sh -O /tmp/install_sublime_text.sh
+
+  - name: Install Sublime
+    command: bash /tmp/install_sublime_text.sh

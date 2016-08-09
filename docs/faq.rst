@@ -2,7 +2,7 @@
 Frequently Asked Questions
 ==========================
 
-:Q: **Why you use Ubuntu and not Debian as default Operating System?**
-:A:Because, currently Ubuntu based images are faster building than Debian ones.
+:Q: **Why you use Debian and not Ubuntu as default Operating System?**
+:A:Because, Debian has a smaller base than Ubuntu.
 
 

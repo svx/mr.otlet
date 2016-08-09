@@ -26,6 +26,9 @@ pull: ## Get/Update needed docker container
 	@echo "$(GREEN)==> Getting mr.ansible ....$(RESET)"
 	docker pull quay.io/tiramisu/mr.ansible
 
+image: ## building the image
+	make -C builder/packer/ build
+
 setup:  ## Run all setup steps at once
 	@echo ""
 	@echo "$(YELLOW)Please source the functions from the *func* directory!$(RESET)"

@@ -35,10 +35,13 @@
 
   - name: Download Sublime Installer
     copy: src=files/install_sublime_text.sh dest=/tmp/install_sublime_text.sh
-  
+
   - name: Install Sublime
     become: yes
-    command: bash /tmp/install_sublime_text.sh
+    command: bash /tmp/install_sublime_text.sh -p
+
+  - name: Copy Sublime User Settings
+    copy: src=files/sublime/User dest=/home/vagrant/.config/sublime-text-3/Packages/ owner=vagrant group=vagrant
 
   - name: Upload Gnome Shell theme
     copy: src=files/paper-gtk-theme_2.1+r263~daily~ubuntu16.04.1_all.deb dest=/tmp/paper-gtk-theme_2.1+r263~daily~ubuntu16.04.1_all.deb

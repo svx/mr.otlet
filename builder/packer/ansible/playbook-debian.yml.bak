@@ -1,0 +1,215 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+  tasks:
+
+      #    - name: Get VirtualBox version.
+      #      shell: cat /home/vagrant/.vbox_version
+      #      register: virtualbox_version
+
+      #    - name: Mount VirtualBox guest additions ISO.
+      #      mount:
+      #        name: /tmp/vbox
+      #        src: "/home/vagrant/VBoxGuestAdditions_{{ virtualbox_version.stdout }}.iso"
+      #        opts: loop
+      #        state: mounted
+      #        fstype: iso9660
+    
+      #    - name: Run VirtualBox guest additions installation.
+      #      shell: sh /tmp/vbox/VBoxLinuxAdditions.run
+      #      failed_when: false
+    
+      #    - name: Unmount VirtualBox guest additions ISO.
+      #      mount:
+      #        name: /tmp/vbox
+      #        src: "/home/vagrant/VBoxGuestAdditions_{{ virtualbox_version.stdout }}.iso"
+      #        state: absent
+      #        fstype: iso9660
+    
+      #    - name: Delete VirtualBox guest additions ISO.
+      #      file:
+      #        path: "/home/vagrant/VBoxGuestAdditions_{{ virtualbox_version.stdout }}.iso"
+      #        state: absent
+
+    - name: Ensure apt cache is updated.
+      apt: update_cache=yes cache_valid_time=3600
+    
+     # SSH daemon configuration.
+    - name: Configure SSH daemon.
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        state: present
+      with_items:
+        - regexp: '^UseDNS'
+          line: 'UseDNS no'
+        - regexp: '^GSSAPIAuthentication'
+          line: 'GSSAPIAuthentication no'
+    
+     # vagrant SSH configuration.
+    - name: Configure vagrant .ssh directory.
+      file:
+        path: /home/vagrant/.ssh
+        state: directory
+        owner: vagrant 
+        group: vagrant 
+        mode: 0700
+
+    - name: Get vagrant's public key.
+      get_url:
+        url: https://github.com/mitchellh/vagrant/raw/master/keys/vagrant.pub
+        dest: /home/vagrant/.ssh/authorized_keys
+        owner: vagrant 
+        group: vagrant 
+        mode: 0600
+   
+    - apt: "name={{ item }} state=installed"
+      with_items:
+        - apt-transport-https
+        - ca-certificates
+        - git
+        - wget
+        - curl
+        - vim
+        - zsh
+        - htop
+        - tmux
+        - ntp
+
+    - name: Ensure correct kernel headers are installed.
+      shell: "apt-get -y install linux-headers-$(uname -r)"
+
+      #    - name: Ensure correct kernel extra are installed.
+      #      shell: "apt-get -y install linux-image-extra-$(uname -r)"
+      #    
+    - name: Set timezone to UTC
+      when: ansible_date_time.tz != 'UTC'
+      command: timedatectl set-timezone UTC
+
+    - name: Enable ntp service
+      service: >
+        name=ntp
+        enabled=yes
+        state=started
+
+    - name: Disable automatic apt get updates
+      shell: systemctl disable  {{item}}
+      with_items:
+        - apt-daily
+        - apt-daily.service
+        - apt-daily.timer
+
+    - name: Ensure we got docker apt repo
+      apt_repository: repo='deb https://apt.dockerproject.org/repo debian-jessie main' state=present
+    
+    - name: Ensure we got docker gpg key 
+      apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
+    
+    - name: Ensure apt cache is updated.
+      apt: update_cache=yes
+ 
+    - name: Has docker 
+      apt: name=docker-engine force=yes state=present
+    
+    - name: Add vagrant to docker group
+      user: name=vagrant groups=docker append=yes
+
+    - name: Install gnome-desktop
+      apt: "name={{ item }} state=installed"
+      with_items:
+        - gnome
+
+    - name: Ensure we are Upgraded 
+      shell: apt-get -y upgrade && apt-get -y dist-upgrade
+
+    - name: Copy vimrc
+      copy: src=files/vimrc dest=/home/vagrant/.vimrc owner=vagrant group=vagrant
+
+    - name: Create vim dir
+      file: path=/home/vagrant/.vim state=directory owner=vagrant group=vagrant
+
+    - name: Upload vim directory
+      copy: src=files/vim dest=/home/vagrant/ owner=vagrant group=vagrant
+
+    - name: stat foo
+      stat: path=/home/vagrant/vim
+      register: foo_stat
+
+    - name: Move vim to .vim
+      become_user: vagrant
+      command: mv /home/vagrant/vim /home/vagrant/.vim
+      when: foo_stat.stat.exists
+
+    - name: Cloning Vundle
+      become_user: vagrant
+      git: repo=https://github.com/gmarik/Vundle.vim.git dest=/home/vagrant/.vim/bundle/Vundle.vim
+
+    - name: Run vundle install
+      become_user: vagrant
+      command: vim +PluginInstall! +qall
+
+    - name: Download Sublime Installer
+      copy: src=files/install_sublime_text.sh dest=/tmp/install_sublime_text.sh
+
+    - name: Install Sublime
+      become: yes
+      command: bash /tmp/install_sublime_text.sh -p
+
+    - name: Copy Sublime User Settings
+      copy: src=files/sublime/User dest=/home/vagrant/.config/sublime-text-3/Packages/ owner=vagrant group=vagrant
+
+    - name: Upload Gnome Shell theme
+      copy: src=files/paper-gtk-theme_2.1+r263~daily~ubuntu16.04.1_all.deb dest=/tmp/paper-gtk-theme_2.1+r263~daily~ubuntu16.04.1_all.deb
+
+    - name: Upload Gnome Icon Theme
+      copy: src=files/paper-icon-theme_1.3+r567~daily~ubuntu16.04.1_all.deb dest=/tmp/paper-icon-theme_1.3+r567~daily~ubuntu16.04.1_all.deb
+
+    - name: Install Theme
+      become: yes
+      command: dpkg -i /tmp/paper-gtk-theme_2.1+r263~daily~ubuntu16.04.1_all.deb
+
+    - name: Install Icon Theme
+      become: yes
+      command: dpkg -i /tmp/paper-icon-theme_1.3+r567~daily~ubuntu16.04.1_all.deb
+
+    - name: Set gtk-theme for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.interface gtk-theme "Paper"
+
+    - name: Set desktop for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.wm.preferences theme "Paper"
+
+    - name: Set icon-theme for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.interface icon-theme 'Paper'
+
+    - name: Set title bar font for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 10'
+
+    - name: Set interface font for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.interface font-name 'Cantarell Regular10'
+
+    - name: Set interface document font for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.interface document-font-name 'Sans Regular 10'
+
+    - name: Set background primary color for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.background primary-color "#425265"
+
+    - name: Set background secondary color for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.background secondary-color "#425265"
+
+    - name: Set background color shading type for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.background color-shading-type "solid"
+
+    - name: Set background pictue options for vagrant user
+      become_user: vagrant
+      command: dbus-launch gsettings set org.gnome.desktop.background picture-options "none"

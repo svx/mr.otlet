@@ -27,7 +27,7 @@ pull: ## Get/Update needed docker container
 	docker pull quay.io/tiramisu/mr.ansible
 
 image: ## building the image
-	make -C builder/packer/ build
+	make -C builder/packer build
 
 setup:  ## Run all setup steps at once
 	@echo ""

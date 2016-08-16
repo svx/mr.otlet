@@ -19,20 +19,20 @@ function error_exit {
 }
 
 # Start with a friendly message
-echo -en "$COL_BLUE ==> Starting build process, first check which OS we're on$COL_RESET"
+echo -en "$COL_BLUE ==> Starting build process, first check which OS we're on$COL_RESET\n"
 
 
 # Check if we are on Ubuntu or Fedora
 OS=`lsb_release -si`
 
 if [ "$OS" == "Fedora" ]; then
-	echo -en "$COL_YELLOW ==> Detected Fedora$COL_RESET"
-	sleep 10s
+	echo -en "$COL_YELLOW ==> Detected Fedora$COL_RESET\n"
+	sleep 5s
 	clear
 	~/bin/packer build debian-8-jessie-virtualbox.json
 elif [ "$OS" == "Ubuntu" ]; then
-	echo -en "$COL_YELLOW ==> Detected Ubuntu, will use packer$COL_RESET"
-	sleep 10s
+	echo -en "$COL_YELLOW ==> Detected Ubuntu, will use packer$COL_RESET\n"
+	sleep 5s
 	clear
 	packer build debian-8-jessie-virtualbox.json
 fi

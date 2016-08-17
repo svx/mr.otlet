@@ -112,3 +112,10 @@ gtk-update-icon-cache $ICON_PREFIX/share/icons/hicolor/
 echo ""
 echo "Sublime Text 3 installed successfully!"
 echo "Run with: subl"
+
+# Run configuration setup
+#mkdir -p /home/vagrant/.config/sublime-text-3/Packages/
+echo "Moving user config into place"
+cp -r /tmp/sublime-text-3 /home/vagrant/.config/sublime-text-3
+chown -R vagrant:vagrant /home/vagrant/.config/sublime-text-3/
+

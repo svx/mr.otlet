@@ -1,0 +1,8 @@
+Todo
+====
+
+- Update files [directory we upload], with sublime settings and install script
+- Update ansible playbook we use on packer build with sublime
+- Update docs
+- Make the difference between ansible during build time and during vagrant boot clear
+- Update Vagrantfile template

@@ -18,6 +18,11 @@ function error_exit {
 	exit 1
 }
 
+# Remove old iso
+echo -en "$COL_YELLOW ==> Removing old iso files$COL_RESET\n"
+rm -rf output-virtualbox-iso
+sleep 5s
+
 # Start with a friendly message
 echo -en "$COL_BLUE ==> Starting build process, first check which OS we're on$COL_RESET\n"
 

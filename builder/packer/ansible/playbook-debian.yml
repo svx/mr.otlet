@@ -123,11 +123,11 @@
 
     - name: Copy vimrc
       become_user: vagrant
-      command: mv /tmp/stuff/vimrc /home/vagrant/.vimrc
+      command: mv /tmp/files/vimrc /home/vagrant/.vimrc
 
     - name: Copy vim directory
       become_user: vagrant
-      command: mv /tmp/stuff/vim /home/vagrant/.vim
+      command: mv /tmp/files/vim /home/vagrant/.vim
 
     - name: stat foo
       stat: path=/home/vagrant/vim
@@ -155,11 +155,11 @@
 
     - name: Install Theme
       become: yes
-      command: dpkg -i /tmp/stuff/paper-gtk-theme_2.1+r263~daily~ubuntu16.04.1_all.deb
+      command: dpkg -i /tmp/files/paper-gtk-theme_2.1+r263~daily~ubuntu16.04.1_all.deb
 
     - name: Install Icon Theme
       become: yes
-      command: dpkg -i /tmp/stuff/paper-icon-theme_1.3+r567~daily~ubuntu16.04.1_all.deb
+      command: dpkg -i /tmp/files/paper-icon-theme_1.3+r567~daily~ubuntu16.04.1_all.deb
 
     - name: Set gtk-theme for vagrant user
       become_user: vagrant

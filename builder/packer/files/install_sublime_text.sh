@@ -116,6 +116,6 @@ echo "Run with: subl"
 # Run configuration setup
 #mkdir -p /home/vagrant/.config/sublime-text-3/Packages/
 echo "Moving user config into place"
-cp -r /tmp/sublime-text-3 /home/vagrant/.config/sublime-text-3
+cp -r /tmp/files/sublime-text-3 /home/vagrant/.config/sublime-text-3
 chown -R vagrant:vagrant /home/vagrant/.config/sublime-text-3/
 

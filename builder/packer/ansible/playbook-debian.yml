@@ -151,7 +151,7 @@
 
     - name: Install Sublime
       become: yes
-      command: bash /tmp/files/install_sublime_text.sh p
+      command: bash /tmp/files/install_sublime_text.sh
 
     - name: Install Theme
       become: yes

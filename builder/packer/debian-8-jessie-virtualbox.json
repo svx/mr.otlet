@@ -65,8 +65,8 @@
     },
     {
       "type": "file",
-      "source": "files/stuff",
-      "destination": "/tmp/stuff"
+      "source": "files",
+      "destination": "/tmp/files"
     },
     {
       "type": "shell",

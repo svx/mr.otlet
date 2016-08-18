@@ -141,13 +141,17 @@
       become_user: vagrant
       command: vim +PluginInstall! +qall
 
-    - name: Install Sublime
-      become: yes
-      command: bash /tmp/stuff/install_sublime_text.sh -p
+    #- name: Install Sublime
+    #  become: yes
+    #  command: bash /tmp/stuff/install_sublime_text.sh -p
 
     #- name: Copy Sublime User Settings
     #  become_user: vagrant
     #  command: /tmp/stuff/sublime/User /home/vagrant/.config/sublime-text-3/Packages/
+
+    - name: Install Sublime
+      become: yes
+      command: bash /tmp/files/install_sublime_text.sh p
 
     - name: Install Theme
       become: yes

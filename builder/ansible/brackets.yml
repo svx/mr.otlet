@@ -1,0 +1,22 @@
+---
+- hosts: all
+  tasks:
+ 
+  - name: Download libgcrypt11.deb
+    get_url:
+      url: http://security.debian.org/debian-security/pool/updates/main/libg/libgcrypt11/libgcrypt11_1.5.0-5+deb7u5_amd64.deb
+      dest: /tmp/libgcrypt11_1.5.0-5+deb7u5_amd64.deb
+
+  - name: Install libgcrypt11 .deb
+    become: yes
+    command: dpkg -i /tmp/libgcrypt11_1.5.0-5+deb7u5_amd64.deb
+
+  - name: Download brackets
+    get_url:
+      url: https://github.com/adobe/brackets/releases/download/release-1.7/Brackets.Release.1.7.64-bit.deb
+      dest: /tmp/Brackets.Release.1.7.64-bit.deb
+
+  - name: Install Brackets
+    become: yes
+    command: dpkg -i /tmp/Brackets.Release.1.7.64-bit.deb
+
